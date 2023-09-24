@@ -22,6 +22,7 @@
     <!-- Data to make available to the XML via data binding. In this case,
          the whole ViewModel, so that we can access the LiveData,
          click handlers, and state variables. -->
+
     <data>
         <variable
             name="sleepTrackerViewModel"
@@ -70,20 +71,21 @@
             style="@style/SleepButtons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:enabled="@{sleepTrackerViewModel.startButtonVisible}"
             android:layout_marginStart="@dimen/margin"
             android:text="@string/start"
             app:layout_constraintBaseline_toBaselineOf="@id/stop_button"
             app:layout_constraintEnd_toStartOf="@+id/stop_button"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
-            android:onClick="@{() -> sleepTrackerViewModel.onStartTracking()}"
-            />
+            android:onClick="@{() -> sleepTrackerViewModel.onStartTracking()}"/>
 
         <Button
             android:id="@+id/stop_button"
             style="@style/SleepButtons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:enabled="@{sleepTrackerViewModel.stopButtonVisible}"
             android:layout_marginTop="@dimen/margin"
             android:layout_marginEnd="@dimen/margin"
             android:text="@string/stop"
@@ -97,6 +99,7 @@
             style="@style/SleepButtons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:enabled="@{sleepTrackerViewModel.clearButtonVisible}"
             android:layout_marginStart="@dimen/margin"
             android:layout_marginEnd="@dimen/margin"
             android:layout_marginBottom="@dimen/margin"
